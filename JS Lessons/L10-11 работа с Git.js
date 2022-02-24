@@ -18,4 +18,5 @@ git merge work_with_web
 git pull // скачать изменения с сервера ко мне на локалку
 
 
-// git remote add origin https://github.com/Daestalos/Udemy-courses
+// git remote add origin https://github.com/Daestalos/Udemy-courses.git (ur url)
+// git push -u origin master

@@ -1,14 +1,14 @@
 "use strict";
 
-//alert("Hello");
+alert("Hello");
 
-//const result = confirm("Are you here?");
+let result = confirm("Are you here?"); // true/false
 
-//const answer = prompt('Вам есть 18?', '18');
+const answer = prompt('Вам есть 18?', '18');
 // string
-//console.log(typeof(answer));
+console.log(typeof(answer));
 
-//const answerr = +prompt('Вам есть 18?', '18'); 
+const answerr = +prompt('Вам есть 18?', '18'); 
 // преобразовали в number
 
 // ВСЯ ИНФОРМАЦИЯ ОТ ПОЛЬЗОВАТЕЛЯ STRING!!!!!!!!!!!!!!!
@@ -23,3 +23,5 @@ answers[2] = prompt('Сколько вам лет?', '');
 document.write(answers);
 
 console.log(typeof(answers));
+
+

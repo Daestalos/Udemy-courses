@@ -6,6 +6,7 @@
 
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String
 // документация по строкам и методам
+
 const str = 'Test'; 
 const arr = [1, 2, 4];
 // lenght - свойство
@@ -15,6 +16,28 @@ console.log(arr.length); // =3
 console.log(str[2]); // =s
 console.log(str[2] = 'd'); // не сможем изменить напрямую, это делается через методы
 console.log (str); // =test
+
+// добавление в конец массива
+const array = [1, 2, 4];
+array.push("newVal");
+console.log(array); // [ 1, 2, 4, 'newVal' ]
+
+// добавление в начало массива
+array.unshift("begginArr");
+console.log(array); // [ 'begginArr', 1, 2, 4, 'newVal' ]
+
+// удаление с конца массива
+array.pop();
+console.log(array); // [ 'begginArr', 1, 2, 4 ]
+
+// удаление с начала массива
+array.shift();
+console.log(array); // [ 1, 2, 4 ]
+
+//  удаление с определенного места опред количество
+array.splice(1, 2); // удалить с 1 позиции 2 элемента
+console.log(array); // [ 1 ]
+
 
 console.log(str.toUpperCase()); // = TEST
 //обязательно круглые скобки в конце, т.к. метод.
@@ -42,6 +65,7 @@ console.log(logg.substring(6, 11)); // =world
 
 console.log(logg.substr(6, 5)); // =world
 // мы на 2 позиции указываем длинну, сколько нам нужно вырезать (5)
+
 
 
 const num = 12.2;

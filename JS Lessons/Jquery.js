@@ -245,7 +245,7 @@ $(window).scroll(() => {
 
 
 /* ОТЛОЖЕННАЯ АНИМАЦИЯ */
-
+// [18 минута 12 урок Брауна]
 // https://habr.com/ru/post/494670/
 // https://developer.mozilla.org/ru/docs/Web/API/Intersection_Observer_API
 

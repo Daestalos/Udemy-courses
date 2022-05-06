@@ -57,6 +57,18 @@ console.log(num1); // выведет 20, ибо обращается к глоб
 //*\\
 
 
+const usdCurr = 28;
+const eurCurr = 32;
+function convert(amount, curr){
+    console.log(curr * amount);
+}
+convert(500, usdCurr);
+convert(500, eurCurr);
+
+
+//*\\
+
+
 function f3(val) {
     return val + 1;
 }

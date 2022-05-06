@@ -65,7 +65,8 @@ for (let arrItems of array){
 // перебор через forEach
 let arrayTwo = [1, 2, 3, 4, 'plus', {}, [], false];
 arrayTwo.forEach(function(item, index, array){
-    console.log(`item: ${item}, index: ${index}, array: ${array}`);
+    console.log(`item: ${item}, index: ${index}, array: ${array}`
+    );
 //  =  item: 1, index: 0, array: 1,2,3,4,plus,[object Object],,false
     // item: 2, index: 1, array: 1,2,3,4,plus,[object Object],,false
     // item: 3, index: 2, array: 1,2,3,4,plus,[object Object],,false

@@ -23,11 +23,20 @@ console.log(2*4 == '8'); // == сравнение по значению
 console.log(2*4 === '8'); // === строгое сравнение по типу данных
 
 // оператор && (и) только когда 2 true
-// || - оператор или
+
 
 const isChecked = true,
       isClose = true;
 console.log(isChecked && isClose);
+
+const ham = true;
+const fri = true;
+
+if (ham && fri){ // выполнится, т.к. выполненны оба условия
+    console.log('Я сыт!');
+}
+
+// || - оператор или
 
 const isChecked1 = true,
       isClose1 = false;
@@ -37,3 +46,5 @@ console.log(isChecked1 || !isClose1); // !isClose1 = true
 console.log(2+2*4 === 8); // false
 
 console.log(2+2*2 != 8); // не равен = true
+
+

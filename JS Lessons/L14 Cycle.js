@@ -70,3 +70,100 @@ for (let arrItems of array){
     // []
     // false
 }
+
+
+// перебор через forEach
+let arrayTwo = [1, 2, 3, 4, 'plus', {}, [], false];
+arrayTwo.forEach(function(item, index, array){
+    console.log(`item: ${item}, index: ${index}, array: ${array}`
+    );
+//  =  item: 1, index: 0, array: 1,2,3,4,plus,[object Object],,false
+    // item: 2, index: 1, array: 1,2,3,4,plus,[object Object],,false
+    // item: 3, index: 2, array: 1,2,3,4,plus,[object Object],,false
+    // item: 4, index: 3, array: 1,2,3,4,plus,[object Object],,false
+    // item: plus, index: 4, array: 1,2,3,4,plus,[object Object],,false
+    // item: [object Object], index: 5, array: 1,2,3,4,plus,[object Object],,false
+    // item: , index: 6, array: 1,2,3,4,plus,[object Object],,false
+    // item: false, index: 7, array: 1,2,3,4,plus,[object Object],,false
+});
+
+
+// двумерный массив
+
+let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+];
+console.log(matrix[0][1]); // = 2
+
+for (let i = 0; i<matrix.length; i++) {
+    for(let j = 0; j<matrix[i].length; j++) {
+        console.log(matrix[i][j]);
+        // = 1
+        // 2
+        // 3
+        // 4
+        // 5
+        // 6
+        // 7
+        // 8
+        // 9
+    }
+}
+
+// можно так же сделать при помощи for of
+
+
+
+// *
+// **
+// ***
+// ****
+// *****
+// ******
+
+let result = '';
+const length = 7;
+
+for (let i = 0; i < length; i++){
+    result += '*';
+    console.log(result);
+}
+
+
+// от ивана
+
+
+let resultt = '';
+const lengthh = 7;
+
+for (let i = 0; i < lengthh; i++){
+
+    for (let j = 0; j< i; j++){
+        resultt += '*';
+    }
+    resultt += '\n';
+}
+
+console.log(result);
+
+//      *
+//     ***
+//    *****
+//   *******
+//  *********
+const lines = 5;
+let res = '';
+// Проверяется именно переменная result, формируйте строку в ней
+
+for(let i = 0; i < lines ;i++){
+    for (let j = 0; j < lines - i; j++){
+        res += ' ';
+    }
+    for(let j = 0; j < 2 * i + 1; j++){
+        res +='*';
+    }
+    res += '\n';
+}
+console.log(res);

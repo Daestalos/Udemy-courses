@@ -7,4 +7,4 @@ const storeDescription = {
         'water': 5
     },
     open: true
-}
+};

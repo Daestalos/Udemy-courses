@@ -26,7 +26,7 @@ function start() {
     numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
     
     while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '').trim();
     }
 }
         
@@ -51,14 +51,14 @@ function showMyDB (hidden) {
 
 function writeYourGenres() {
     for (let i = 0; i < 3; i++){
-        dataEmpty[i] = prompt(`Ваш любимый жанр под номером ${i+1}`, '');
+        dataEmpty[i] = prompt(`Ваш любимый жанр под номером ${i+1}`, '').trim();
     }
 }
 
 
 function rememberMyFilms() {
     for (let i = 0; i<2; i++){
-        questionFilm = prompt("Один из просмотренный фильмов?", '');
+        questionFilm = prompt("Один из просмотренный фильмов?", '').trim();
         if (questionFilm == null || questionFilm == '' || questionFilm.length > 50) {
             alert ('Строка не может быть пустой, либо превышать значение в 50');
             i--;

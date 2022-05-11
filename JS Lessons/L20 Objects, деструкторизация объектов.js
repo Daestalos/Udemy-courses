@@ -84,6 +84,7 @@ const optionss = {
 
 console.log(Object.keys(optionss)); // = [ 'name', 'width', 'height', 'colors' ]
 
+// вместо кучи перебора можно выполнить одной строчкой
 console.log(Object.keys(optionss).length); //=4
 
 
@@ -128,9 +129,3 @@ const opt = {
 const {border, bg} = opt.colors; // деструктиризация 
 console.log(border);
 opt.makeTest();
-
-
-
-
-
-

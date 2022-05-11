@@ -279,9 +279,10 @@ function onEnrtry (entry){
     //
     entry.forEach(change => {
         // если change (наш элемент) попал в наблюдатель, т.е. сработал threshold
-        if (change.isIntersecting){}
+        if (change.isIntersecting){
         // то для нашего change, т.е. для нашего элемента добавляем класс show-animation
-        change.target.classList.add('.show-animation')
+        change.target.classList.add('show-animation');
+    }
     });
 }
 
@@ -305,3 +306,27 @@ change.target.src = change.target.dataset.src;
 // https://fotorama.io 
 // https://kenwheeler.github.io/slick/
 // [37 минута 12 урока Брауна]
+
+
+
+// АНИМАЦИЯ С WOW JS
+// [13 урок Брауна 4 МИНУТА]
+
+
+// [13 Урок Брауна 7 минута]
+// jQuery.Maskedinput js
+// Плагин дает возможность быстро создать маску для номера телефона +7(___)__-__-__, даты, номера кредитной карты и т.д.
+
+$(document).ready(function(){
+    $("#inputTel").mask("+7(999) 999-9999");
+    // при попытку отправить фотму проверяем
+    $('form').submit()(function(event){
+    // На айфонах required поля может не сработать и пользовтаель может отправить пустые данные, поэтому делаем проверку на пустоту
+    if ($("#inputTel").val() == "" || $("#inputEmail").val() == ""){
+        // отменяем стандартные действия формы (без event.prev.. все-равно бы форма отправляла данные) и задаем свои действия (алерт)
+        event.preventDefault();
+        alert('введите телефон');
+    }
+    });
+
+});

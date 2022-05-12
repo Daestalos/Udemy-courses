@@ -77,8 +77,8 @@ for (let i = 0; i < arr.length; i++){
 }
 
 // можно так же сделать при помощи for of
-let array = [1, 2, 3, 4, 'plus', {}, [], false];
-for (let arrItems of array){
+let array1 = [1, 2, 3, 4, 'plus', {}, [], false];
+for (let arrItems of array1){
     console.log(arrItems);
     // = 1
     // 2

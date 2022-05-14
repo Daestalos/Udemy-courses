@@ -13,5 +13,18 @@ const baseCurrencies = ['USD', 'EUR'];
 const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
 
 function availableCurr(arr, missingCurr) {
+    let available = "";
+    arr.length === 0 ? available = 'Нет доступных валют' : available = 'Доступные валюты:\n';
+    for (let val of arr){
+        if (val == missingCurr){
+            continue;
+        }
+        else {
+            available += `${val}\n`;
+        }
+        }
 
+    return available;
 }
+
+console.log(availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY'));

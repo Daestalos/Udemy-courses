@@ -15,7 +15,7 @@ function sortStudentsByGroups(arr) {
             rest.push(arr[i]);
         }
     }
-    return [a,b,c, `Оставшиеся студенты: ${rest.length === 0 ? '-' : rest.join(', ')}`]
+    return [a,b,c, `Оставшиеся студенты: ${rest.length === 0 ? '-' : rest.join(', ')}`];
 }
 
 sortStudentsByGroups(students);

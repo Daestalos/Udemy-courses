@@ -93,34 +93,34 @@ hearts[0].replaceWith(circles[0]); // сердечко заменяем круж
 // <-----------------  Создание элементов -------------------->
 
 // в скобках мы должны поместить название элемента, который хотим создать и он будет существовать только внутри JS файла, на странице он никак не появится
-const div = document.createElement('div');
+const divv = document.createElement('div');
 
 // <------------------- Изменение содержания элементов ------------->
 // допустим мы хотим поместить в наш элемент какой-то текст
 
 // 1) innerHTML - можем вставлять не только текст, но и html структуры
-div.innerHTML = 'Hello World';
-div.innerHTML = "<h1>Hello World</h1>";
+divv.innerHTML = 'Hello World';
+divv.innerHTML = "<h1>Hello World</h1>";
 
 // 2) textContent (устарневший), но хоть и устаревший, если нам нужно вписать ТОЛЬКО текст, но нужно использовать его, иначе пользователь может встать html теги и поломать нам верстку, либо какой-то сторонний скрипт
-div.textContent = 'Hello world';
+divv.textContent = 'Hello world';
 
 // 3) insertAdjacentHTML = Вставить кусочек html кода перед или после определенных тегов. Принимает 2 аргумента: 1- специальное слово (afterbegin, afterend, beforebegin, beforeend), 2 - html, который мы хотим вставить, либо текст
 // beforebegin - вставить непосредственно перед элементом
 // afterbegin - в начало элемента
 // beforeend - перед концом
 // afterend - после конца
-div.insertAdjacentHTML('beforebegin','<h1>Hello</h1>')
+divv.insertAdjacentHTML('beforebegin','<h1>Hello</h1>')
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // <-------------- Устаревшие методы для работы на странице ------------>
 
 // appendChild - происходит тоже самое, что и с append
-wrapper.appendChild(div);
+wrapper.appendChild(divv);
 
 // InsertBefore - вставить перед
 // принимает в себя 2 аргумента, 1 - какой элемент вставляем, 2 - перед каким
-wrapper.insertBefore(div, hearts[0]);
+wrapper.insertBefore(divv, hearts[0]);
 
 // раньше не существовало метода remove, только removeChild 
 wrapper.removeChild(hearts[1]);

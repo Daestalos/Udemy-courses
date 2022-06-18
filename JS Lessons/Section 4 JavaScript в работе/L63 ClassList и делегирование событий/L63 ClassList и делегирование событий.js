@@ -114,10 +114,6 @@ wrapper.addEventListener('click', (e)=>{
 
 wrapper.addEventListener('click', (e)=>{
     console.dir(e.target);
-    // tagName всегда пишется капсом
-    // if (e.target && e.target.tagName == 'BUTTON'){
-    //     console.log('hello'); // будет выводится при нажатии на все кнопки
-    // }
     if (e.target && e.target.classList.matches('button.red')){ 
         console.log('matches'); // будет выводится при нажатии на все кнопки
     }

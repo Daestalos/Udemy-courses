@@ -26,7 +26,7 @@ console.log(typeof(Number('4')));
 
 // 2) унарный плюс
 console.log(typeof(+'5')); // = number
-
+console.log(+'5' + 5);
 // 3)
 console.log(typeof(parseInt('15px', 10))); // = number
 

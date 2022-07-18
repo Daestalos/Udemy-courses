@@ -133,3 +133,104 @@ inputRub.addEventListener('input', ()=>{
     
 
 });
+
+
+// <------------------------------------ FormData -------------------------------------->
+
+// FormData - специальный объект, который позволяет с определенной формы быстро сформировать заполненные пользователем данные, при чем формируется точно так же: формат, ключ, значение
+
+// создадим переменную для форм
+const forms = document.querySelectorAll('form');
+
+// создаем переменную formData, передаем экземпляр класса FormData и указываем из какой формы брать данные
+const formData = new FormData(forms);
+
+// Пример с использование XMLHttpRequest
+
+    // используем нашу переменную forms
+
+    // функция отправки данных
+    function postData(form){
+        // submit срабатывает каждый раз, когда пытаемся отправить какую-то форму
+        form.addEventListener('submit', (e)=>{
+            // отменяем стандартное поведение браузера
+            e.preventDefauld();
+
+            // создаем экземпляр класса
+            const request = new XMLHttpRequest();
+            // создаем настройки для запроса
+            request.open('POST', 'server.php');
+
+            // Передача данных, которые пользователь заполнил на форме через FormData
+
+        
+            // FormData - специальный объект, который позволяет с определенной формы быстро сформировать заполненные пользователем данные, при чем формируется точно так же: формат, ключ, значение
+
+            // создаем переменную formData, передаем экземпляр класса FormData и указываем из какой формы брать данные
+
+            // !!!! Если мы подразумеваем, что данные будут идти на сервер, то абсолютно всегда мы ОБЯЗАНЫ элементу input задавать атрибут name, иначе FormData не найти инпут и взять с него value
+
+            // Когда мы используем связку XMLHttpRequest и FormData нам заголовок (setRequestHeader) устанавливать не нужно, он устанавливается автоматически
+            // request.setRequestHeader('Content-type', 'multipart/form-data')
+            const formData = new FormData(form);
+
+            // отправляем данные
+            request.send(formData);
+
+            request.addEventListener('load', ()=>{
+                // проверяем, что запрос успешно отправлен
+                if (request.status === 200){
+                    console.log(request.response);
+                }
+            });
+        });
+    }
+
+
+// <----------------------------------------------- FormData и JSON ---------------------------------------------------->
+
+// В отличии от FormData, если нам для сервера нужен JSON - заголовок нужен
+// request.setRequestHeader('Content-type', 'application/json; charset=uth-8');
+
+// перепишем функцию выше под формат для работы с FormData и JSON
+
+function postData(form){
+    // submit срабатывает каждый раз, когда пытаемся отправить какую-то форму
+    form.addEventListener('submit', (e)=>{
+        // отменяем стандартное поведение браузера
+        e.preventDefauld();
+
+        // создаем экземпляр класса
+        const request = new XMLHttpRequest();
+        // создаем настройки для запроса
+        request.open('POST', 'server.php');
+
+        // задаем заголов для запроса
+        request.setRequestHeader('Content-type', 'application/json; charset=uth-8');
+        const formData = new FormData(form);
+
+        // !!FormData это специфичный объект, мы просто так не можем его прогнать в другой формат, для этого нам нужно воспользоваться одним приемом, который часто используется
+
+        // создадим объект в который будем записывать данный с formData
+        const object = {};
+        // переберем FormData при помощи цикла forEach (он хранит в себе массив с данными) и запишем в object
+        formData.forEach((value,key) =>{
+            object[key] = value;
+        })
+
+        // после того как получили обычные данные, а не FormData мы можем использовать конвертацию в JSON
+
+        // превращаем обычный объект в JSON
+        const json = JSON.stringify(object);
+
+        // помещаем json с данными для отправки в send
+        request.send(json);
+
+        request.addEventListener('load', ()=>{
+            // проверяем, что запрос успешно отправлен
+            if (request.status === 200){
+                console.log(request.response);
+            }
+        });
+    });
+}

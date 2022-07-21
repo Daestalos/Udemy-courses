@@ -1,29 +1,29 @@
 "use strict";
 
-window.addEventListener('DOMContentLoaded', ()=>{
-    
+window.addEventListener('DOMContentLoaded', () => {
+
     // < Tabs >
     const tabs = document.querySelectorAll('.tabheader__item'),
-          tabsContent = document.querySelectorAll('.tabcontent'),
-          tabsParent = document.querySelector('.tabheader__items');
-    
+        tabsContent = document.querySelectorAll('.tabcontent'),
+        tabsParent = document.querySelector('.tabheader__items');
+
     function hideTabContent() {
         // скрываем все табы
-        tabsContent.forEach(item =>{
+        tabsContent.forEach(item => {
             // item.style.display = 'none';
             item.classList.add('hide');
             item.classList.remove('show', 'fade');
         });
 
         // убираем класс активности
-        tabs.forEach(item =>{
+        tabs.forEach(item => {
             item.classList.remove('tabheader__item_active');
         });
 
     }
 
     // i = 0 - если функция вызывается без аргумента, то по умолчанию берем 0
-    function showTabContent(i = 0){
+    function showTabContent(i = 0) {
         // указываем какой таб будет у нас отображаться
 
         // tabsContent[i].style.display = 'block';
@@ -35,14 +35,14 @@ window.addEventListener('DOMContentLoaded', ()=>{
     hideTabContent();
     showTabContent(); // показываем первый слайд
 
-    tabsParent.addEventListener('click', (e)=>{
+    tabsParent.addEventListener('click', (e) => {
         // переопределяем, это делается для того, что если нам дальше придется кажыдй раз прописывать, то намного проще использовать такую конструкцию
         const target = e.target;
 
         // сначала проверяем просто на target есть ли он && проверяем что мы точно кликнули по tab, а не по родителю
-        if (target && target.classList.contains('tabheader__item')){
-            tabs.forEach( (item, i) => {
-                if (target == item){
+        if (target && target.classList.contains('tabheader__item')) {
+            tabs.forEach((item, i) => {
+                if (target == item) {
                     hideTabContent();
                     showTabContent(i);
                 }
@@ -57,54 +57,54 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const deadline = '2022-04-30';
 
     // функциця, которая будет определять разницу между нашим дедлайном и текущем временем
-    function getTimeRemaining(endtime){
+    function getTimeRemaining(endtime) {
         // получаем кол-во миллесек, которое будет в нашем конечном времени, до которого нам нужно досчитать и отнимаем от нынешней даты. Date.parse(new Date()) можно убрать Date.parse и оставить new Date(), разницы не будет
-        const t = Date.parse(endtime) - Date.parse(new Date()); 
+        const t = Date.parse(endtime) - Date.parse(new Date());
 
         // дополнительно проверим дату на прошедшую дату
         let days, hours, minutes, seconds
-        if (t <= 0){
+        if (t <= 0) {
             // вместо нулей можно прописать все что угодно, сформировать новый блок верстки и т.д.
             days = 0;
             hours = 0;
             minutes = 0;
             seconds = 0;
         } else {
-        // Теперь эту разницу в мс нужно превратить в количество дней, часов, минут и секунд
-        // округляем для ближайшего целого, во внутрь помещаем мат. выражение для высчитывания дней
+            // Теперь эту разницу в мс нужно превратить в количество дней, часов, минут и секунд
+            // округляем для ближайшего целого, во внутрь помещаем мат. выражение для высчитывания дней
             // 1000 * 60 (колличество мил. в минуте) * 60 ( в часе ) * 24 (в дне), получаем сколько в сутках мс
             days = Math.floor(t / (1000 * 60 * 60 * 24));
             // общее количество часов делим на 24 (% делит без остатка), но так как мы делим с оператором %, то мы получим хвостик, которого не хватает до полных суток
             hours = Math.floor((t / (1000 * 60 * 60) % 24)),
-            // сначала получаем количество секунд / 60 и получаем количество минут % 60 чтобы получить хвастик минут от часа
-            minutes = Math.floor((t / 1000 / 60) % 60),
-            seconds = Math.floor( (t/1000) % 60 );
+                // сначала получаем количество секунд / 60 и получаем количество минут % 60 чтобы получить хвастик минут от часа
+                minutes = Math.floor((t / 1000 / 60) % 60),
+                seconds = Math.floor((t / 1000) % 60);
         }
 
 
 
         // возвращаем объект с нашими значениями
         return {
-            'total': t,  // общее количество мс
+            'total': t, // общее количество мс
             'days': days,
             'hours': hours,
             'minutes': minutes,
             'seconds': seconds
         };
-    
-    } 
+
+    }
 
     // функция, которая будет устанавливать наши часы, наш таймер на странице (главный элемент на странице и конечное время)
-    function setClock(selector, endtime){
+    function setClock(selector, endtime) {
         // сделано это так, чтобы мы могли использовать эту функцию для каких-то других таймеров
         const timer = document.querySelector(selector),
-              days = timer.querySelector('#days'),
-              hours = timer.querySelector('#hours'),
-              minutes = timer.querySelector('#minutes'),
-              seconds = timer.querySelector('#seconds'),
-              timeInterval = setInterval(updateClock, 1000);
+            days = timer.querySelector('#days'),
+            hours = timer.querySelector('#hours'),
+            minutes = timer.querySelector('#minutes'),
+            seconds = timer.querySelector('#seconds'),
+            timeInterval = setInterval(updateClock, 1000);
 
-        
+
         // Предусматриваем поведение, что таймер мигает и показывает изначальные значения, а затем их заменяет на правильные просто вызвав updateclock. Этот баг происходит, так как изначально у нас updateClock вызовется только через 1 сек
         updateClock();
 
@@ -133,8 +133,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
         }
 
         // функция, которая ставит 0 перед значение, если значение < 0 
-        function getZero (num){
-            if (num >= 0 && num < 10){
+        function getZero(num) {
+            if (num >= 0 && num < 10) {
                 return `0${num}`;
             } else {
                 return num;
@@ -152,21 +152,21 @@ window.addEventListener('DOMContentLoaded', ()=>{
     // Прописываем нашим кнопкам-триггерам дата-атрибут (которые открывают модальное окно (data-modal) и закрывают (data-close)) для того, если у них разные классы и чтобы можно было на них назначит одно и тоже действие
 
     const modal = document.querySelector('.modal'),
-          modalTrigger = document.querySelectorAll('[data-modal]'),
-          modalCloseBtn = document.querySelector('[data-close]');
+        modalTrigger = document.querySelectorAll('[data-modal]'),
+        modalCloseBtn = document.querySelector('[data-close]');
 
-    function openModal(){
+    function openModal() {
         // modal.classList.add('show');
         // modal.classList.remove('hide');
         // либо через toggle
         modal.classList.toggle('show');
-            
+
         // Зафиксируем модальное окно, чтобы не работала прокрутка когда оно открыто
         document.body.style.overflow = 'hidden';
-        
+
         // убираем таймер, если пользователь сам открыл модальное окно
         clearInterval(modalTimerId);
-    }      
+    }
 
     function closeModal() {
         // modal.classList.add('hide');
@@ -186,16 +186,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
     // закрыть окно, если нажимаем на подложку
     modal.addEventListener('click', e => {
-        if (e.target === modal){
+        if (e.target === modal) {
             closeModal();
         }
-        
+
     });
 
     // закрываем, если нажимаем на Esc
     document.addEventListener('keydown', (e) => {
         // выполнится если нажмем на esc и модальное окно открыто
-        if (e.code === "Escape" && modal.classList.contains('show')) { 
+        if (e.code === "Escape" && modal.classList.contains('show')) {
             closeModal();
         }
     });
@@ -203,16 +203,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 
     // < Модификация модального окна >
-    
+
     // создадим таймер, по прошествию которого для пользователя откроется модальное окно
     const modalTimerId = setTimeout(openModal, 5000);
 
-    function showModalByScroll(){
+    function showModalByScroll() {
         // PageYOffset - отслеживает сколько пользователь отлистил пикселей с топа страницы по оси Y
         // Возьмем свойство, которое отвечает за прокрутку сверху, свойство отображает высоту клиента и будем сравнивать со scrollHeight (с полной прокруткой и полным контентом, который есть)
         // window.pageYOffset - прокрученая часть, document.documentElement.clientHeight - видимая часть пользователя, document.documentElement.scrollHeight - вся высота страницы
         // -1 пиксель, так как существует баг, при котором может не отображаться модальное окно, когда страница полностью прокручена
-        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight -1){
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
             openModal();
             // удаляем обработчик события, если модальное окно было показано 1 раз
             window.removeEventListener('scroll', showModalByScroll);
@@ -225,7 +225,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
     // < Шаблонизация карточек Меню >
     class MenuCard {
-        constructor(src, alt, title, descr, price, parentSelector, ... classes) {
+        constructor(src, alt, title, descr, price, parentSelector, ...classes) {
             this.src = src;
             this.alt = alt;
             this.title = title;
@@ -236,11 +236,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
             this.parent = document.querySelector(parentSelector);
             this.transfer = 27;
-            this.changeToUAH(); 
+            this.changeToUAH();
         }
 
         changeToUAH() {
-            this.price = this.price * this.transfer; 
+            this.price = this.price * this.transfer;
         }
 
         render() {
@@ -252,7 +252,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 element.classList.add(this.classes);
             } else {
                 // достаем все классы из массива и присваиваем их div
-                this.classes.forEach( className => element.classList.add(className));
+                this.classes.forEach(className => element.classList.add(className));
             }
 
             element.innerHTML = `
@@ -268,7 +268,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
             this.parent.append(element);
         }
     }
-    
+
     const firstMenu = new MenuCard(
         "img/tabs/vegy.jpg",
         "vegy",
@@ -278,10 +278,10 @@ window.addEventListener('DOMContentLoaded', ()=>{
         ".menu .container",
         'menu__item',
         'big'
-        )
+    )
 
     firstMenu.render();
-    
+
     new MenuCard(
         "img/tabs/post.jpg",
         "post",
@@ -320,11 +320,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
     });
 
     // функция отправки данных
-    function postData(form){
+    function postData(form) {
         // submit срабатывает каждый раз, когда пытаемся отправить какую-то форму
-        form.addEventListener('submit', (e)=>{
+        form.addEventListener('submit', (e) => {
             // отменяем стандартное поведение браузера
-            e.preventDefauld();
+            e.preventDefault();
 
             // выведем сообщение о состоянии отправки данных
             const statusMessage = document.createElement('div');
@@ -341,7 +341,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
             // Передача данных, которые пользователь заполнил на форме через FormData
 
-        
+
             // FormData - специальный объект, который позволяет с определенной формы быстро сформировать заполненные пользователем данные, при чем формируется точно так же: формат, ключ, значение
 
             // создаем переменную formData, передаем экземпляр класса FormData и указываем из какой формы брать данные
@@ -358,29 +358,28 @@ window.addEventListener('DOMContentLoaded', ()=>{
             // отправляем данные
             request.send(formData);
 
-            request.addEventListener('load', ()=>{
+            request.addEventListener('load', () => {
                 // проверяем, что запрос успешно отправлен
-                if (request.status === 200){
+                if (request.status === 200) {
                     console.log(request.response);
 
                     statusMessage.textContent = message.success;
 
                     // очищаем форму после отправки
                     form.reset();
-                    
+
                     // Удаляем блок с текстом статуса через 2 секунды
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         statusMessage.remove();
                     }, 2000)
-                }
-                else {
+                } else {
                     statusMessage.textContent = message.failure;
                 }
             });
         });
     }
 
-    
+
 
 
 });
